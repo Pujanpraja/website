@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trekking Routes — GoNepal</title>
+  <meta name="description" content="Trekking routes in Nepal: Everest Base Camp, Annapurna Circuit, Langtang and Upper Mustang — route info, hotels, live weather, map and directions." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="trekkings.css">
+</head>
+<body>
+
+  <a href="gonepal.html" class="back-btn" aria-label="Go back to Home">← Go Back</a>
+
+  <!-- intentionally no global nav on this page -->
+
+  <section class="hero container">
+    <h1>Trekking Routes of Nepal</h1>
+    <p>Choose from classic and offbeat treks — route overviews, lodging options, live weather, interactive map and one-click directions and booking.</p>
+  </section>
+
+  <main class="section" id="routes">
+    <h2 style="color:var(--primary-700)">Popular Treks</h2>
+    <p class="small">Tap a route card to view trail highlights, recommended teahouses & lodges, map location and current weather.</p>
+
+    <div class="grid reveal" id="cards">
+    </div>
+
+    <!-- detail panel -->
+    <section class="detail reveal" id="detailPanel" aria-live="polite">
+      <div class="detail-header">
+        <h2 id="detailTitle">Trek</h2>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="btn btn-ghost" id="backBtn">← Back</button>
+          <div class="small" id="shortDesc">Overview</div>
+        </div>
+      </div>
+
+      <div class="detail-grid" style="margin-top:16px">
+        <div>
+          <div class="detail-hero" id="heroImageWrap">
+          </div>
+
+          <div style="margin-top:16px" id="longDescContainer">
+            <p id="longDesc" style="color:var(--muted)"></p>
+            <ul id="routeFacts" style="color:var(--muted)"></ul>
+          </div>
+
+          <div style="margin-top:18px">
+            <h4 style="margin:0 0 10px 0;color:var(--primary-700)">Teahouses & Lodges</h4>
+            <div class="hotels" id="hotelsList" aria-live="polite"></div>
+          </div>
+
+          <div style="margin-top:18px">
+            <h4 style="margin:0 0 10px 0;color:var(--primary-700)">Transport</h4>
+            <div class="transport-options" id="transportOptions">
+              <button class="btn btn-ghost transport-btn" onclick="selectTransport('bus')">Bus</button>
+              <button class="btn btn-ghost transport-btn" onclick="selectTransport('airplane')">Airplane</button>
+            </div>
+            <div class="transport-details" id="transportDetails" style="display:none;">
+              <div id="busSection" style="display:none;">
+                <h5 style="margin:10px 0;color:var(--primary-700)">Top Bus Companies</h5>
+                <div class="bus-list" id="busList"></div>
+              </div>
+              <div id="airplaneSection" style="display:none;">
+                <h5 style="margin:10px 0;color:var(--primary-700)">Airplane Tickets</h5>
+                <div class="airplane-booking" id="airplaneBooking"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside>
+          <div class="widget" style="margin-bottom:12px">
+            <h4>Map</h4>
+            <div id="map" class="map"></div>
+            <div class="actions" style="margin-top:10px">
+              <button class="btn btn-ghost" id="openMaps">Open in Google Maps</button>
+              <button class="btn btn-ghost" id="directionsBtn">Directions</button>
+            </div>
+          </div>
+
+          <div class="widget" style="margin-bottom:12px">
+            <h4>Live Weather</h4>
+            <div class="weather" id="weatherWidget">
+              <div class="temp" id="weatherTemp">—</div>
+              <div class="meta">
+                <div id="weatherDesc">—</div>
+                <div id="weatherExtra" style="font-size:.9rem;color:var(--muted)">—</div>
+                <div id="weatherFeels" style="font-size:.9rem;color:var(--muted)">Feels like: —</div>
+                <div id="weatherHumidity" style="font-size:.9rem;color:var(--muted)">Humidity: —</div>
+                <div id="weatherPressure" style="font-size:.9rem;color:var(--muted)">Pressure: —</div>
+                <div id="weatherUV" style="font-size:.9rem;color:var(--muted)">UV Index: —</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="widget">
+            <h4>Quick Info</h4>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+              <div><strong>Duration:</strong> <span id="duration">—</span></div>
+              <div><strong>Max altitude:</strong> <span id="altitude">—</span></div>
+              <div><strong>Difficulty:</strong> <span id="difficulty">—</span></div>
+            </div>
+          </div>
+
+          <div class="widget">
+            <h4>Rate this Trek</h4>
+            <div class="rating-stars" id="trekStars" role="radiogroup" aria-label="Rate trek">
+              <button class="rating-star unfilled" data-value="1" aria-label="1 star">★</button>
+              <button class="rating-star unfilled" data-value="2" aria-label="2 stars">★</button>
+              <button class="rating-star unfilled" data-value="3" aria-label="3 stars">★</button>
+              <button class="rating-star unfilled" data-value="4" aria-label="4 stars">★</button>
+              <button class="rating-star unfilled" data-value="5" aria-label="5 stars">★</button>
+            </div>
+            <div style="margin-top:8px; font-size:0.9rem; color:var(--muted)">
+              <span id="trekAvg">—</span> (<span id="trekCount">0</span> ratings)
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="text-align:center;padding:36px 20px;background:linear-gradient(90deg,var(--primary),var(--primary-700));color:#fff;margin-top:40px">
+    <div class="container">
+      <strong>GoNepal</strong> — Trek Nepal • © <span id="year"></span>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="trekkings.js"></script>
+</body>
+</html>

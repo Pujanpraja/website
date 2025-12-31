@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nepal Festivals — GoNepal</title>
+  <meta name="description" content="Major Nepal festivals: Dashain, Tihar, Holi, Teej, Bisket Jatra, Gai Jatra, Indra Jatra, Rato Machindranath, Chhath, Shivaratri — descriptions, best time, travel tips, festival foods and practical notes." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="festivals.css">
+</head>
+<body>
+
+  <a href="gonepal.html" class="back-btn" aria-label="Go back to Home">← Go Back</a>
+
+  <section class="hero container">
+    <h1>Nepal Festivals</h1>
+    <p>Explore Nepal's vibrant festivals — learn best times to visit, travel tips, what to taste and practical notes for visitors.</p>
+  </section>
+
+  <main class="section" id="explore">
+    <h2 style="color:var(--primary-700)">Featured Festivals</h2>
+    <p class="small">Click a card to view festival descriptions, best time to visit, travel tips and recommended festival foods.</p>
+
+    <div class="grid reveal" id="cards">
+      <div class="card" data-id="dashain">
+        <img src="dashain1.jpg" alt="Dashain Festival">
+        <span class="tag">Autumn</span>
+        <h3>Dashain</h3>
+        <p>Largest Nepali festival celebrating the victory of good over evil — family gatherings, tika and swings.</p>
+      </div>
+
+      <div class="card" data-id="tihar">
+        <img src="tihar.jpg" alt="Tihar Festival">
+        <span class="tag">Autumn</span>
+        <h3>Tihar (Deepawali)</h3>
+        <p>Festival of lights honoring animals and Lakshmi — beautiful lamps, rangoli and family feasts.</p>
+      </div>
+
+      <div class="card" data-id="holi">
+        <img src="holi.jpg" alt="Holi Festival">
+        <span class="tag">Spring</span>
+        <h3>Holi</h3>
+        <p>Colorful festival of colors — street celebrations, colored powders and sweet treats.</p>
+      </div>
+
+      <div class="card" data-id="teej">
+        <img src="teej.jpg" alt="Teej Festival">
+        <span class="tag">Monsoon</span>
+        <h3>Teej</h3>
+        <p>Women’s festival of fasting, songs and dances — vibrant red attire and traditional processions.</p>
+      </div>
+
+      <div class="card" data-id="bisket">
+        <img src="bisketjatra.jpg" alt="Bisket Jatra">
+        <span class="tag">Spring</span>
+        <h3>Bisket Jatra</h3>
+        <p>Newar celebration in Bhaktapur marking the Nepali new year with chariots, pulling rituals and lively processions.</p>
+      </div>
+
+      <div class="card" data-id="gai">
+        <img src="gaijatra.jpg" alt="Gai Jatra">
+        <span class="tag">Summer</span>
+        <h3>Gai Jatra</h3>
+        <p>Festival of cows and satirical processions where families commemorate lost ones with humor and masquerade.</p>
+      </div>
+
+      <div class="card" data-id="indra">
+        <img src="indrajatra.jpg" alt="Indra Jatra">
+        <span class="tag">Autumn</span>
+        <h3>Indra Jatra</h3>
+        <p>Major Kathmandu festival with masked dances, chariot processions and the display of living goddess Kumari.</p>
+      </div>
+
+      <div class="card" data-id="rato">
+        <img src="ratomachindranath.jpg" alt="Rato Machindranath">
+        <span class="tag">Spring</span>
+        <h3>Rato Machindranath</h3>
+        <p>Chariot festival in Patan honoring rain-giving deity—long procession, cultural rites and community gatherings.</p>
+      </div>
+
+      <div class="card" data-id="chhath">
+        <img src="chath.jpg" alt="Chhath">
+        <span class="tag">Winter</span>
+        <h3>Chhath</h3>
+        <p>Sun-worshipping festival celebrated on riverbanks with rigorous rituals, offerings and communal prayers.</p>
+      </div>
+
+      <div class="card" data-id="shivaratri">
+        <img src="shivaratri.jpg" alt="Shivaratri">
+        <span class="tag">Winter</span>
+        <h3>Maha Shivaratri</h3>
+        <p>Night-long Hindu festival of Lord Shiva — devotees fast, chant and gather at temples like Pashupatinath.</p>
+      </div>
+
+    </div>
+
+    <!-- unified detail panel -->
+    <section class="detail reveal" id="detailPanel" aria-live="polite">
+      <div class="detail-header">
+        <h2 id="detailTitle">Festival</h2>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="btn btn-ghost" id="backBtn">← Back</button>
+          <div class="small" id="shortDesc">Overview</div>
+        </div>
+      </div>
+
+      <div class="detail-grid" style="margin-top:16px">
+        <div>
+          <div class="detail-hero" id="heroImageWrap">
+            <img id="heroImage" src="" alt="">
+          </div>
+
+          <div style="margin-top:16px" id="longDescContainer">
+            <p id="longDesc" style="color:var(--muted)"></p>
+
+            <div style="margin-top:12px" class="info-block">
+              <strong>Best time to visit:</strong> <span id="bestTime">—</span>
+            </div>
+
+            <div style="margin-top:12px" class="info-block">
+              <strong>Travel tips:</strong>
+              <ul id="tips" style="color:var(--muted);margin-top:8px"></ul>
+            </div>
+
+            <div style="margin-top:12px" class="info-block">
+              <strong>Festival foods to try:</strong>
+              <div class="chips" id="foods"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <aside>
+          <div class="widget">
+            <h4>Quick Facts</h4>
+            <div class="info-block" style="margin-top:8px">
+              <div><strong>Typical duration:</strong> <span id="duration">—</span></div>
+              <div style="margin-top:8px"><strong>Where celebrated:</strong> <span id="locations">—</span></div>
+              <div style="margin-top:8px"><strong>Family friendly:</strong> <span id="family">—</span></div>
+            </div>
+
+            <div style="margin-top:12px" class="tips">
+              <strong>Etiquette & Safety</strong>
+              <ul id="etiquette" style="color:var(--muted);margin-top:8px">
+                <!-- filled dynamically -->
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="text-align:center;padding:36px 20px;background:linear-gradient(90deg,var(--primary),var(--primary-700));color:#fff;margin-top:40px">
+    <div class="container">
+      <strong>GoNepal</strong> — Festivals • © <span id="year"></span>
+    </div>
+  </footer>
+
+  <script src="festivals.js"></script>
+</body>
+</html>

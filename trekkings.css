@@ -1,0 +1,126 @@
+:root{
+  --primary:#004d98;
+  --primary-700:#00386e;
+  --accent:#ffcc33;
+  --muted:#6b7280;
+  --bg: linear-gradient(180deg,#eef6ff 0%,#f3f8ff 100%);
+  --card-shadow: 0 18px 60px rgba(8,24,64,0.08);
+  --radius:14px;
+  --max-width:1180px;
+}
+html,body{height:100%;margin:0;font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Arial;color:#071022;background:var(--bg);}
+.container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+a{color:inherit;text-decoration:none}
+
+/* NAV kept for home reuse but not included on this page */
+nav{position:fixed;left:0;right:0;top:12px;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;z-index:1400}
+
+/* HERO */
+.hero{
+  margin-top:28px;
+  background: linear-gradient(135deg, #063a6b 0%, #072c56 60%);
+  color:#fff;
+  padding:64px 20px;
+  border-radius:18px;
+  box-shadow: var(--card-shadow);
+  margin-bottom:28px;
+}
+.hero h1{font-size:2.2rem;margin:0 0 8px}
+.hero p{opacity:.95;max-width:72ch}
+
+/* page layout */
+.section{max-width:var(--max-width);margin:28px auto;padding:0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:14px}
+.card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 12px 30px rgba(10,20,50,0.06);transition:transform .2s;cursor:pointer;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-8px)}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+.card h3{color:var(--primary-700);margin:6px 0}
+.card p{color:var(--muted);font-size:.95rem;margin:0 0 8px}
+.tag{display:inline-block;padding:6px 8px;border-radius:8px;background:linear-gradient(90deg,rgba(0,77,152,0.06),transparent);color:var(--primary-700);font-weight:600;font-size:.85rem}
+
+/* detail panel */
+.detail{display:none;margin:30px auto 60px;max-width:1000px;background: linear-gradient(180deg,#fff,#fbfdff);border-radius:14px;padding:22px;box-shadow: var(--card-shadow);border:1px solid rgba(8,30,80,0.04)}
+.detail.show{display:block}
+.detail-header{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.detail-header h2{margin:0;color:var(--primary-700)}
+.detail-grid{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px}
+@media(max-width:980px){ .detail-grid{grid-template-columns:1fr} }
+.detail-hero img{width:100%;height:380px;object-fit:cover;border-radius:10px;display:block}
+
+/* slideshow */
+.slideshow{position:relative;width:100%;height:380px;overflow:hidden;border-radius:10px}
+.slideshow img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;opacity:0;transition:opacity .5s ease}
+.slideshow img.active{opacity:1}
+.slideshow-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.8);border:none;width:40px;height:40px;border-radius:50%;font-size:20px;color:#333;cursor:pointer;z-index:10;transition:background .3s}
+.slideshow-arrow:hover{background:#fff}
+.slideshow-arrow-left{left:10px}
+.slideshow-arrow-right{right:10px}
+
+/* widgets */
+.widget{background:#fff;border-radius:12px;padding:14px;box-shadow:0 10px 28px rgba(6,16,36,0.06);border:1px solid #eef6ff}
+.widget h4{margin:0 0 8px 0;color:var(--primary-700)}
+.map{height:240px;border-radius:8px;overflow:hidden}
+.weather{display:flex;gap:12px;align-items:center}
+.weather .temp{font-size:2rem;font-weight:800;color:#1f2937}
+.weather .meta{color:var(--muted)}
+
+/* hotels */
+.hotels{display:grid;gap:12px}
+.hotel{display:flex;gap:12px;align-items:center;padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid #f2f8ff}
+.hotel img{width:84px;height:64px;object-fit:cover;border-radius:8px}
+.hotel .info{flex:1}
+.hotel .info h5{margin:0;font-size:1rem;color:var(--primary-700)}
+.hotel .info p{margin:6px 0;color:var(--muted);font-size:.92rem}
+.cta{display:flex;flex-direction:column;gap:8px}
+.btn{padding:8px 12px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+.btn-primary{background:linear-gradient(90deg,var(--primary-700),#165fa8);color:#fff}
+.btn-ghost{background:transparent;border:1px solid rgba(7,18,40,0.06);color:var(--primary-700)}
+
+.small{font-size:.9rem;color:var(--muted)}
+.reveal{opacity:0;transform:translateY(8px);transition:all .6s ease}
+.reveal.visible{opacity:1;transform:none}
+/* Back button (top-left) */
+.back-btn{
+  position:fixed;
+  left:18px;
+  top:18px;
+  z-index:1600;
+  background:rgba(255,255,255,0.96);
+  color:var(--primary-700);
+  border-radius:10px;
+  padding:8px 12px;
+  box-shadow:0 8px 24px rgba(8,24,64,0.12);
+  font-weight:700;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.back-btn:hover{transform:translateY(-2px)}
+
+/* rating stars */
+.rating-stars{display:flex;gap:4px;margin-top:8px}
+.rating-star{background:none;border:none;font-size:1.5rem;color:#ddd;cursor:pointer;padding:0;outline:none}
+.rating-star:hover,.rating-star.selected{color:#ffb400}
+.rating-star.unfilled{color:#ddd}
+.rating-star.selected{color:#ffb400}
+
+/* transport options */
+.transport-options{display:flex;gap:10px;margin-bottom:10px}
+.transport-btn.active{background:var(--primary);color:#fff}
+.transport-details{margin-top:10px}
+.bus-list{display:grid;gap:12px}
+.bus-item{display:flex;gap:12px;align-items:center;padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid #f2f8ff}
+.bus-item img{width:84px;height:64px;object-fit:cover;border-radius:8px}
+.bus-item .info{flex:1}
+.bus-item .info h5{margin:0;font-size:1rem;color:var(--primary-700)}
+.bus-item .info p{margin:6px 0;color:var(--muted);font-size:.92rem}
+.bus-item .cta{display:flex;flex-direction:column;gap:8px}
+.airplane-booking{background:#fff;border-radius:12px;padding:14px;margin-top:10px;border:1px solid #eef6ff}
+.airplane-booking h5{margin:0 0 10px;color:var(--primary-700)}
+.flight-option{display:flex;gap:12px;align-items:center;padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid #f2f8ff;margin-bottom:10px}
+.flight-option img{width:84px;height:64px;object-fit:cover;border-radius:8px}
+.flight-option .info{flex:1}
+.flight-option .info h5{margin:0;font-size:1rem;color:var(--primary-700)}
+.flight-option .info p{margin:6px 0;color:var(--muted);font-size:.92rem}
+.flight-option .cta{display:flex;flex-direction:column;gap:8px}
